@@ -1,5 +1,15 @@
 import PropTypes from 'prop-types';
 import defaultImg from '../../default-image.jpg';
+import {
+  Card,
+  Meta,
+  Thumb,
+  Name,
+  Stat,
+  StatItem,
+  StatLabel,
+  StatValue,
+} from './Profile.styled';
 
 export const Profile = ({
   userData: {
@@ -11,29 +21,31 @@ export const Profile = ({
   },
 }) => {
   return (
-    <div className="profile">
-      <div className="description">
-        <img src={avatar} alt={`${username} avatar`} className="avatar" />
-        <p className="name">{username}</p>
-        <p className="tag">{`@${tag}`}</p>
-        <p className="location">{location}</p>
-      </div>
+    <Card>
+      <Meta>
+        <Thumb>
+          <img src={avatar} alt={`${username} avatar`} />
+        </Thumb>
+        <Name>{username}</Name>
+        <p>{`@${tag}`}</p>
+        <p>{location}</p>
+      </Meta>
 
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{followers}</span>
-        </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{likes}</span>
-        </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{views}</span>
-        </li>
-      </ul>
-    </div>
+      <Stat>
+        <StatItem>
+          <StatLabel>Followers</StatLabel>
+          <StatValue>{followers}</StatValue>
+        </StatItem>
+        <StatItem>
+          <StatLabel>Views</StatLabel>
+          <StatValue>{likes}</StatValue>
+        </StatItem>
+        <StatItem>
+          <StatLabel>Likes</StatLabel>
+          <StatValue>{views}</StatValue>
+        </StatItem>
+      </Stat>
+    </Card>
   );
 };
 
